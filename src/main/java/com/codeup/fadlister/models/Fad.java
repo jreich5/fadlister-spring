@@ -4,6 +4,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
@@ -50,4 +51,98 @@ public class Fad {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fad")
     private List<Rating> ratings;
 
+    public Fad() {
+    }
+
+    public Fad(String name, String description, String decade, Timestamp createdDate, Timestamp modifiedDate, List<Category> categories, List<Comment> comments, List<Flag> flags, List<Rating> ratings) {
+        this.name = name;
+        this.description = description;
+        this.decade = decade;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.categories = categories;
+        this.comments = comments;
+        this.flags = flags;
+        this.ratings = ratings;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDecade() {
+        return decade;
+    }
+
+    public void setDecade(String decade) {
+        this.decade = decade;
+    }
+
+    public Timestamp getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Timestamp createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Timestamp getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Timestamp modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Flag> getFlags() {
+        return flags;
+    }
+
+    public void setFlags(List<Flag> flags) {
+        this.flags = flags;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
 }
