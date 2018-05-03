@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "messages")
 public class Message {
 
     @Id
@@ -38,6 +39,13 @@ public class Message {
     private User recipient;
 
     public Message() {
+    }
+
+    public Message(String subject, String body, User sender, User recipient) {
+        this.subject = subject;
+        this.body = body;
+        this.sender = sender;
+        this.recipient = recipient;
     }
 
     public Message(String subject, String body, Timestamp createdDate, Timestamp modifiedDate, User sender, User recipient) {

@@ -38,7 +38,19 @@ public class Ban {
     @JoinColumn(name = "user_id")
     private User user;
 
+//    private String log;
+//    private boolean isActive;
+//    private User admin;
+//    private User user;
+
     public Ban() {
+    }
+
+    public Ban(String log, boolean isActive, User admin, User user) {
+        this.log = log;
+        this.isActive = isActive;
+        this.admin = admin;
+        this.user = user;
     }
 
     public Ban(String log, boolean isActive, Timestamp createdDate, Timestamp modifiedDate, User admin, User user) {

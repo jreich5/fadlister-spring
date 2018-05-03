@@ -22,6 +22,10 @@ public class Category {
     public Category() {
     }
 
+    public Category(String name) {
+        this.name = name;
+    }
+
     public Category(String name, List<Fad> fads) {
         this.name = name;
         this.fads = fads;

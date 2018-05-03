@@ -40,6 +40,12 @@ public class Rating {
     public Rating() {
     }
 
+    public Rating(byte rating, Fad fad, User user) {
+        this.rating = rating;
+        this.fad = fad;
+        this.user = user;
+    }
+
     public Rating(byte rating, Timestamp createdDate, Timestamp modifiedDate, Fad fad, User user) {
         this.rating = rating;
         this.createdDate = createdDate;

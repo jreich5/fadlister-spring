@@ -51,7 +51,23 @@ public class Fad {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fad")
     private List<Rating> ratings;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToOne
+    @JoinColumn(name = "image_id")
+    private Image image;
+
     public Fad() {
+    }
+
+    public Fad(String name, String description, String decade, Image image, List<Category> categories) {
+        this.name = name;
+        this.description = description;
+        this.decade = decade;
+        this.image = image;
+        this.categories = categories;
     }
 
     public Fad(String name, String description, String decade, Timestamp createdDate, Timestamp modifiedDate, List<Category> categories, List<Comment> comments, List<Flag> flags, List<Rating> ratings) {
@@ -144,5 +160,13 @@ public class Fad {
 
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

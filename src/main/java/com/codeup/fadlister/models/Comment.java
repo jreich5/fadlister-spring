@@ -35,20 +35,21 @@ public class Comment {
     @JoinColumn(name = "fad_id")
     private Fad fad;
 
-    @ManyToOne
-    @JoinColumn(name = "comment_id")
-    private Comment comment;
-
     public Comment() {
     }
 
-    public Comment(String content, Timestamp createdDate, Timestamp modifiedDate, User user, Fad fad, Comment comment) {
+    public Comment(String content, User user, Fad fad) {
+        this.content = content;
+        this.user = user;
+        this.fad = fad;
+    }
+
+    public Comment(String content, Timestamp createdDate, Timestamp modifiedDate, User user, Fad fad) {
         this.content = content;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
         this.user = user;
         this.fad = fad;
-        this.comment = comment;
     }
 
     public long getId() {
@@ -99,11 +100,4 @@ public class Comment {
         this.fad = fad;
     }
 
-    public Comment getComment() {
-        return comment;
-    }
-
-    public void setComment(Comment comment) {
-        this.comment = comment;
-    }
 }

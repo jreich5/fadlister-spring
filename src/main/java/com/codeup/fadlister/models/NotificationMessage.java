@@ -18,17 +18,12 @@ public class NotificationMessage {
 
     // relationships...
 
-    @OneToOne
-    @JoinColumn(name = "notification_id")
-    private Notification notification;
-
     public NotificationMessage() {
     }
 
-    public NotificationMessage(String name, String message, Notification notification) {
+    public NotificationMessage(String name, String message) {
         this.name = name;
         this.message = message;
-        this.notification = notification;
     }
 
     public long getId() {
@@ -55,11 +50,4 @@ public class NotificationMessage {
         this.message = message;
     }
 
-    public Notification getNotification() {
-        return notification;
-    }
-
-    public void setNotification(Notification notification) {
-        this.notification = notification;
-    }
 }

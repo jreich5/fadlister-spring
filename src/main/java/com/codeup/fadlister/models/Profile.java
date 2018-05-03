@@ -5,7 +5,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "profiles")
@@ -18,8 +19,8 @@ public class Profile {
     @Column(name = "full_name")
     private String fullName;
 
-    @Temporal(TemporalType.DATE)
-    private java.util.Date dob;
+    @Column(name="dob", columnDefinition = "DATE")
+    private LocalDate dob;
 
     @Column
     private String quote;
@@ -38,16 +39,35 @@ public class Profile {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToOne
+    @JoinColumn(name = "image_id")
+    private Image image;
+
     public Profile() {
     }
 
-    public Profile(String fullName, Date dob, String quote, Timestamp createdDate, Timestamp modifiedDate, User user) {
+    public Profile(String fullName, LocalDate dob, String quote) {
+        this.fullName = fullName;
+        this.dob = dob;
+        this.quote = quote;
+    }
+
+    public Profile(String fullName, LocalDate dob, String quote, Image image) {
+        this.fullName = fullName;
+        this.dob = dob;
+        this.quote = quote;
+        this.user = user;
+        this.image = image;
+    }
+
+    public Profile(String fullName, LocalDate dob, String quote, Timestamp createdDate, Timestamp modifiedDate, User user, Image image) {
         this.fullName = fullName;
         this.dob = dob;
         this.quote = quote;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
         this.user = user;
+        this.image = image;
     }
 
     public long getId() {
@@ -66,11 +86,11 @@ public class Profile {
         this.fullName = fullName;
     }
 
-    public Date getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     }
 
@@ -104,5 +124,13 @@ public class Profile {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }

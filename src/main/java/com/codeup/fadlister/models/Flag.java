@@ -1,6 +1,7 @@
 package com.codeup.fadlister.models;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -19,6 +20,10 @@ public class Flag {
     @CreationTimestamp
     @Column(name = "created_at")
     private java.sql.Timestamp createdDate;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private java.sql.Timestamp modifiedDate;
 
     // relationships...
 
@@ -41,13 +46,30 @@ public class Flag {
     public Flag() {
     }
 
-    public Flag(boolean isActive, Timestamp createdDate, User sender, Comment comment, Fad fad, User user) {
+    public Flag(boolean isActive, User sender, Comment comment, Fad fad, User user) {
         this.isActive = isActive;
-        this.createdDate = createdDate;
         this.sender = sender;
         this.comment = comment;
         this.fad = fad;
         this.user = user;
+    }
+
+    public Flag(boolean isActive, Timestamp createdDate, Timestamp modifiedDate, User sender, Comment comment, Fad fad, User user) {
+        this.isActive = isActive;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.sender = sender;
+        this.comment = comment;
+        this.fad = fad;
+        this.user = user;
+    }
+
+    public Timestamp getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Timestamp modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 
     public long getId() {
@@ -105,4 +127,6 @@ public class Flag {
     public void setUser(User user) {
         this.user = user;
     }
+
+
 }

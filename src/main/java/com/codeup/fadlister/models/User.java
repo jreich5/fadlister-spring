@@ -67,15 +67,23 @@ public class User {
     private List<Message> messagessReceived;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Notification> notifications;
+    private List<Rating> ratings;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Rating> ratings;
+    private List<Fad> fads;
 
     public User() {
     }
 
-    public User(String username, String email, String password, Role role, boolean isActive, Timestamp createdDate, Timestamp modifiedDate, List<Ban> bansReceived, List<Ban> bansGiven, List<Comment> comments, Profile profile, List<Flag> flagsCreated, List<Flag> flagsReceived, List<Message> messagesCreated, List<Message> messagessReceived, List<Notification> notifications, List<Rating> ratings) {
+    public User(String username, String email, String password, Role role, boolean isActive) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.isActive = isActive;
+    }
+
+    public User(String username, String email, String password, Role role, boolean isActive, Timestamp createdDate, Timestamp modifiedDate, List<Ban> bansReceived, List<Ban> bansGiven, List<Comment> comments, Profile profile, List<Flag> flagsCreated, List<Flag> flagsReceived, List<Message> messagesCreated, List<Message> messagessReceived, List<Rating> ratings) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -91,7 +99,6 @@ public class User {
         this.flagsReceived = flagsReceived;
         this.messagesCreated = messagesCreated;
         this.messagessReceived = messagessReceived;
-        this.notifications = notifications;
         this.ratings = ratings;
     }
 
@@ -223,19 +230,19 @@ public class User {
         this.messagessReceived = messagessReceived;
     }
 
-    public List<Notification> getNotifications() {
-        return notifications;
-    }
-
-    public void setNotifications(List<Notification> notifications) {
-        this.notifications = notifications;
-    }
-
     public List<Rating> getRatings() {
         return ratings;
     }
 
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
+    }
+
+    public List<Fad> getFads() {
+        return fads;
+    }
+
+    public void setFads(List<Fad> fads) {
+        this.fads = fads;
     }
 }

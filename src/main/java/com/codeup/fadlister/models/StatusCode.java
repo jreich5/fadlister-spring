@@ -15,16 +15,11 @@ public class StatusCode {
 
     // relationships...
 
-    @OneToOne
-    @JoinColumn(name = "notfication_id")
-    private Notification notification;
-
     public StatusCode() {
     }
 
-    public StatusCode(String name, Notification notification) {
+    public StatusCode(String name) {
         this.name = name;
-        this.notification = notification;
     }
 
     public long getId() {
@@ -43,11 +38,4 @@ public class StatusCode {
         this.name = name;
     }
 
-    public Notification getNotification() {
-        return notification;
-    }
-
-    public void setNotification(Notification notification) {
-        this.notification = notification;
-    }
 }
