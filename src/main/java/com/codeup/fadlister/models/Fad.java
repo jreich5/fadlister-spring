@@ -1,5 +1,6 @@
 package com.codeup.fadlister.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -40,6 +41,7 @@ public class Fad {
         joinColumns = @JoinColumn(name = "fad_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id")
     )
+    @JsonManagedReference
     private List<Category> categories;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fad")

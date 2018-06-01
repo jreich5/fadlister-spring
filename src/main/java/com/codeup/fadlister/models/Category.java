@@ -1,5 +1,9 @@
 package com.codeup.fadlister.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,6 +21,7 @@ public class Category {
     // relationships...
 
     @ManyToMany(mappedBy = "categories")
+    @JsonBackReference
     private List<Fad> fads;
 
     public Category() {
